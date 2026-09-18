@@ -13,18 +13,18 @@ int main()
     array<string, SIZE> heights;
 
     ifstream file;
-    int line, i = 0;
+    int line, index = 0;
     file.open("test.txt");
     if (!file.good()) throw "I/O error";
     if (file.is_open())
     {
-        while (cin >> line)
+        while (file >> line)
         {
-            heights[i] = line;
-            i++;
+            heights[index] = line;
+            index++;
         }
     }
-    
+
     file.close();
     return 0;
 }
