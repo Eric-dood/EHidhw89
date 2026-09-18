@@ -44,16 +44,24 @@ int main()
     cout << endl;
     //2) Array size
     cout << "2) Size: " << heights.size() << endl;
-    //3) 15th element
-    cout << "3) 15th element: " << heights[14] << endl;
+    //3) 14th element
+    cout << "3) 14th element: " << heights[14] << endl;
     //4) Random element
     cout << "4) Random element: " << heights[rand() % (SIZE - 1)] << endl;
-    //5) Sum of all elements
+    //5) 10th element by using at()
+    cout << "5) 10th element by using at(): " << heights.at(10) << endl;
+    //6) Random element by using at()
+    cout << "6) Random element by using at(): " << heights.at(rand() % (SIZE - 1)) << endl;
+    //7) Sum of all elements
     int sum;
     for (int i = 0; i < SIZE; i++)
         sum += heights[i];
-    cout << "5) Sum of heights: " << sum << endl;
-    //6) Average of all heights
-    cout << "6) Average: " << sum / SIZE << endl;
+    cout << "7) Sum of heights: " << sum << endl;
+    //8) Average of all heights
+    cout << "8) Average: " << sum / SIZE << endl;
+    //9) Front of the array
+    cout << "9) Front: " << heights.front() << endl;
+    //10) Back of the array
+    cout << "10) Back: " << heights.back() << endl;
     return 0;
 }
