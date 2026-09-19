@@ -1,6 +1,7 @@
 //COMSC-210 | Lab 9 (Part 1) | Eric-Giulio Hedes
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 #include <array>
 #include <fstream>
 #include <string>
@@ -141,7 +142,7 @@ int main()
     cout << endl;
 
     //Create a 2D array
-    cout << "22) Create a 2D-array: ";
+    cout << "22) Create a 2D-array: " << endl;
     array<int, 3> ar1 = { 1, 2, 3 }, ar2 = { 4, 5, 6 }; //Create ar1 & ar2 as separate 1D-arrays
     array<array<int, 3>, 3> arr2D = { ar1, ar2 }; //Then do a 2D-array with both ar1 and ar2
     for (int i = 0; i < (ar1.size() + ar2.size()); i++)

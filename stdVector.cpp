@@ -1,6 +1,7 @@
 //COMSC-210 | Lab 9 (Part 1) | Eric-Giulio Hedes
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 #include <vector>
 #include <fstream>
 #include <string>
@@ -12,7 +13,7 @@ using namespace std;
 const int SIZE = 30;
 
 //Define a prototype for printVector()
-void printVector(vector<int>, int s);
+void printVector(vector<int>);
 
 int main()
 {
@@ -39,8 +40,8 @@ int main()
 
     file.close();
 
-    //Start doing certain functions with the array
-    //1) Print out the elements of the array
+    //Start doing certain functions with the vector
+    //1) Print out the elements of the vector
     cout << "1) Elements: ";
     printVector(heights);
     //2) Array size
@@ -121,7 +122,7 @@ int main()
     cout << endl;
 
     //21) Create two empty vector and fill 'em up
-    vector<int> vec1, vec2;
+    vector<int> vec1(4), vec2(4);
     fill(vec1.begin(), vec1.end(), 1); //Fill up vector 1 with ones
     fill(vec2.begin(), vec2.end(), 2); //Fill up vector 2 with twos
     cout << "21) Create two vectors and use fill(): " << endl;
