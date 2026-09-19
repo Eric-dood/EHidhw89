@@ -36,7 +36,7 @@ int main()
         }
     }
 
-    //file.close();
+    file.close();
 
     //Start doing certain functions with the array
     //1) Print out the elements of the array
@@ -87,7 +87,16 @@ int main()
         reverseArr2[i] = temp;
     }
     printArray(reverseArr2);
-    
+
+    //14) Find address for the array by data()
+    cout << "14) Array address by using data(): " << heights.data() << endl;
+    //15) Find address by using &
+    cout << "15) Array address by using &: " << &heights << endl;
+    //16) Find the max element
+    cout << "16) Max: " << *max_element(heights.begin(), heights.end()) << endl;
+    //17) Find the min element
+    cout << "17) Min: " << *min_element(heights.begin(), heights.end()) << endl;
+
     return 0;
 }
 
