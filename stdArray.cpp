@@ -136,7 +136,18 @@ int main()
     cout << endl << "Array 2: ";
     for (int i = 0; i < arr2.size(); i++) cout << arr2.at(i) << " ";
     cout << endl;
-    
+
+    //Create a 2D array
+    array<int, 3> ar1 = { 1, 2, 3 }, ar2 = { 4, 5, 6 };
+    array<array<int, 3>, 3> arr2D = { ar1, ar2 };
+    for (int i = 0; i < ar1.size(); i++)
+    {
+        for (int j = 0; j < ar2.size(); j++)
+            cout << ar2[j] << " ";
+        cout << ar1[i] << endl;
+    }
+
+
     return 0;
 }
 
