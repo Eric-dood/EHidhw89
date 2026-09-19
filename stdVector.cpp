@@ -1,7 +1,7 @@
 //COMSC-210 | Lab 9 (Part 1) | Eric-Giulio Hedes
 #include <iostream>
 #include <iomanip>
-#include <array>
+#include <vector>
 #include <fstream>
 #include <string>
 #include <cstdlib>
@@ -11,14 +11,14 @@ using namespace std;
 //SIZE is the maximum size for the array, and in this case, it will be 30.
 const int SIZE = 30;
 
-//Define a prototype for printArray()
-void printArray(array<int, SIZE>);
+//Define a prototype for printVector()
+void printVector(vector<int>, int s);
 
 int main()
 {
     //Declare the array with the maximum size and the data type
     //This array will most likely be based on human adult heights, averaging from 120 to 200 cm.
-    array<int, SIZE> heights;
+    vector<int> heights;
 
     //Random seed generator
     srand(time(0));
@@ -33,7 +33,7 @@ int main()
         while (!file.eof())
         {
             file >> line;
-            heights[index++] = line;
+            heights.push_back(line);
         }
     }
 
@@ -42,7 +42,7 @@ int main()
     //Start doing certain functions with the array
     //1) Print out the elements of the array
     cout << "1) Elements: ";
-    printArray(heights);
+    printVector(heights);
     //2) Array size
     cout << "2) Size: " << heights.size() << endl;
     //3) 14th element
@@ -59,59 +59,59 @@ int main()
     cout << "7) Sum of heights: " << sum << endl;
     //8) Average of all heights
     cout << "8) Average: " << sum / SIZE << endl;
-    //9) Front of the array
+    //9) Front of the vector
     cout << "9) Front: " << heights.front() << endl;
-    //10) Back of the array
+    //10) Back of the vector
     cout << "10) Back: " << heights.back() << endl;
     
-    //11) Sort the array itself
-    cout << "11) Sorted array: ";
-    array<int, SIZE> sortArr = heights;
-    sort(sortArr.begin(), sortArr.end());
-    printArray(sortArr); //use printArray() to print the reversed array
+    //11) Sort the vector itself
+    cout << "11) Sorted vector: ";
+    vector<int> sortVec = heights;
+    sort(sortVec.begin(), sortVec.end());
+    printVector(sortVec); //use printVector() to print the reversed vector
 
     //12) Reverse the array by reverse()
     cout << "12) Reversed array by reverse(): ";
-    array<int, SIZE> reverseArr = heights;
-    reverse(reverseArr.begin(), reverseArr.end());
-    printArray(reverseArr); //use printArray() to print the reversed array
+    vector<int> reverseVec = heights;
+    reverse(reverseVec.begin(), reverseVec.end());
+    printVector(reverseVec); //use printVector() to print the reversed vector
 
-    //13) Reverse the array manually
+    //13) Reverse the vector manually
     cout << "13) Manually reversed array: ";
-    array<int, SIZE> reverseArr2 = heights;
+    vector<int> reverseVec2 = heights;
     for (int i = 0; i < (SIZE / 2); i++)
     {
         //Use 'last' for the last element
         int last = SIZE - (i + 1);
         //Define temp as the last element
-        int temp = reverseArr2[last];
+        int temp = reverseVec2[last];
         //Turn the last element to the first element's number
-        reverseArr2[last] = reverseArr2[i];
+        reverseVec2[last] = reverseVec2[i];
         //The ith element becomes the last element's number
-        reverseArr2[i] = temp;
+        reverseVec2[i] = temp;
     }
-    printArray(reverseArr2); //use printArray() to print the new array
+    printVector(reverseVec2); //use printVector() to print the new array
 
-    //14) Find address for the array by data()
-    cout << "14) Array address by using data(): " << heights.data() << endl;
+    //14) Find address for the vector by data()
+    cout << "14) Vector address by using data(): " << heights.data() << endl;
     //15) Find address by using &
-    cout << "15) Array address by using &: " << &heights << endl;
+    cout << "15) Vector address by using &: " << &heights << endl;
     //16) Find the max element
     cout << "16) Max: " << *max_element(heights.begin(), heights.end()) << endl;
     //17) Find the min element
     cout << "17) Min: " << *min_element(heights.begin(), heights.end()) << endl;
-    //18) Check if the array is empty
+    //18) Check if the vector is empty
     cout << "18) Check if empty: " << ((heights.empty()) ? "Is empty" : "Is NOT empty") << endl;
 
-    //19) Reverse sort the array
-    cout << "19) Reverse sorted array by using rbegin() & rend(): ";
-    array<int, SIZE> sortArr2 = heights;
-    sort(sortArr2.rbegin(), sortArr2.rend());
-    printArray(sortArr2); //use printArray() to print the array
+    //19) Reverse sort the vector
+    cout << "19) Reverse sorted vector by using rbegin() & rend(): ";
+    vector<int> sortVec2 = heights;
+    sort(sortVec2.rbegin(), sortVec2.rend());
+    printVector(sortVec2); //use printVector() to print the vector
 
-    //20) Search for an array by using find()
+    //20) Search for an vector by using find()
     int target = 157;
-    cout << "20) Find for an array by using find(): ";
+    cout << "20) Find for an vector by using find(): ";
     auto t = find(heights.begin(), heights.end(), target); //Use find() to search for the target value
     cout << "Value " << target << " ";
     if (t != heights.end()) //If the target hasn't reached the end
@@ -120,45 +120,33 @@ int main()
         cout << "not found.";
     cout << endl;
 
-    //21) Create two empty arrays and fill 'em up
-    array<int, 5> arr1, arr2;
-    fill(arr1.begin(), arr1.end(), 1); //Fill up array 1 with ones
-    fill(arr2.begin(), arr2.end(), 2); //Fill up array 2 with twos
-    cout << "21) Create two arrays and use fill(): " << endl;
-    cout << "Array 1: ";
-    for (int i = 0; i < arr1.size(); i++) cout << arr1.at(i) << " "; //Print arr1
-    cout << endl << "Array 2: ";
-    for (int i = 0; i < arr2.size(); i++) cout << arr2.at(i) << " "; //Print arr2
+    //21) Create two empty vector and fill 'em up
+    vector<int> vec1, vec2;
+    fill(vec1.begin(), vec1.end(), 1); //Fill up vector 1 with ones
+    fill(vec2.begin(), vec2.end(), 2); //Fill up vector 2 with twos
+    cout << "21) Create two vectors and use fill(): " << endl;
+    cout << "Vector 1: ";
+    for (int i = 0; i < vec1.size(); i++) cout << vec1.at(i) << " "; //Print arr1
+    cout << endl << "Vector 2: ";
+    for (int i = 0; i < vec2.size(); i++) cout << vec2.at(i) << " "; //Print arr2
     cout << endl;
 
-    //22) Swap two of the arrays
-    swap(arr1, arr2); //This function swaps the elements of arr1 and arr2
+    //22) Swap two of the vectors
+    swap(vec1, vec2); //This function swaps the elements of vec1 and vec2
     cout << "21) Swap the two arrays by using swap(): " << endl;
-    cout << "Array 1: ";
-    for (int i = 0; i < arr1.size(); i++) cout << arr1.at(i) << " ";
-    cout << endl << "Array 2: ";
-    for (int i = 0; i < arr2.size(); i++) cout << arr2.at(i) << " ";
+    cout << "Vector 1: ";
+    for (int i = 0; i < vec1.size(); i++) cout << vec1.at(i) << " ";
+    cout << endl << "Vector 2: ";
+    for (int i = 0; i < vec2.size(); i++) cout << vec2.at(i) << " ";
     cout << endl;
-
-    //Create a 2D array
-    cout << "22) Create a 2D-array: ";
-    array<int, 3> ar1 = { 1, 2, 3 }, ar2 = { 4, 5, 6 }; //Create ar1 & ar2 as separate 1D-arrays
-    array<array<int, 3>, 3> arr2D = { ar1, ar2 }; //Then do a 2D-array with both ar1 and ar2
-    for (int i = 0; i < (ar1.size() + ar2.size()); i++)
-    {
-        if (i == ar1.size()) cout << endl; //If the first array has been printed out, leave in space
-        if (i < ar1.size()) cout << ar1[i] << " "; //Print out ar1 elements
-        else cout << ar2[i - ar1.size()] << " "; //Print out ar2 elements
-    }
 
     return 0;
 }
 
-//Define printArray() to print the list of elements an array has
+//Define printVector() to print the list of elements a vector has
 //NOTE: this is to make the code more versatile and clean looking.
-void printArray(array<int, SIZE> arr)
+void printVector(vector<int> vec)
 {
-    for (int i = 0; i < SIZE; i++)
-        cout << arr[i] << " ";
+    for (int i = 0; i < SIZE; i++) cout << vec[i] << " ";
     cout << endl;
 }
