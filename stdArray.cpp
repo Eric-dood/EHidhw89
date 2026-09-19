@@ -11,6 +11,7 @@ using namespace std;
 //SIZE is the maximum size for the array, and in this case, it will be 30.
 const int SIZE = 30;
 
+//Define a prototype for printArray()
 void printArray(array<int, SIZE>);
 
 int main()
@@ -116,9 +117,31 @@ int main()
         cout << "not found.";
     cout << endl;
 
+    //21) Create two empty arrays and fill 'em up
+    array<int, 5> arr1, arr2;
+    fill(arr1.begin(), arr1.end(), 1);
+    fill(arr2.begin(), arr2.end(), 2);
+    cout << "21) Create two arrays and use fill(): " << endl;
+    cout << "Array 1: ";
+    for (int i = 0; i < arr1.size(); i++) cout << arr1.at(i) << " ";
+    cout << endl << "Array 2: ";
+    for (int i = 0; i < arr2.size(); i++) cout << arr2.at(i) << " ";
+    cout << endl;
+
+    //22) Swap two of the arrays
+    swap(arr1, arr2);
+    cout << "21) Swap the two arrays by using swap(): " << endl;
+    cout << "Array 1: ";
+    for (int i = 0; i < arr1.size(); i++) cout << arr1.at(i) << " ";
+    cout << endl << "Array 2: ";
+    for (int i = 0; i < arr2.size(); i++) cout << arr2.at(i) << " ";
+    cout << endl;
+    
     return 0;
 }
 
+//Define printArray() to print the list of elements an array has
+//NOTE: this is to make the code more versatile and clean looking.
 void printArray(array<int, SIZE> arr)
 {
     for (int i = 0; i < SIZE; i++)
