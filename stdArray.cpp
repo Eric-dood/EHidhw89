@@ -11,6 +11,8 @@ using namespace std;
 //SIZE is the maximum size for the array, and in this case, it will be 30.
 const int SIZE = 30;
 
+void printArray(array<int, SIZE>);
+
 int main()
 {
     //Declare the array with the maximum size and the data type
@@ -39,9 +41,7 @@ int main()
     //Start doing certain functions with the array
     //1) Print out the elements of the array
     cout << "1) Elements: ";
-    for (int i = 0; i < SIZE; i++)
-        cout << heights[i] << " ";
-    cout << endl;
+    printArray(heights);
     //2) Array size
     cout << "2) Size: " << heights.size() << endl;
     //3) 14th element
@@ -63,5 +63,37 @@ int main()
     cout << "9) Front: " << heights.front() << endl;
     //10) Back of the array
     cout << "10) Back: " << heights.back() << endl;
+    
+    //11) Sort the array itself
+    cout << "11) Sorted array: ";
+    array<int, SIZE> sortArr = heights;
+    sort(sortArr.begin(), sortArr.end());
+    printArray(sortArr);
+
+    //12) Reverse the array by reverse()
+    cout << "12) Reversed array by reverse(): ";
+    array<int, SIZE> reverseArr = heights;
+    reverse(reverseArr.begin(), reverseArr.end());
+    printArray(reverseArr);
+
+    //13) Reverse the array manually
+    cout << "13) Manually reversed array: ";
+    array<int, SIZE> reverseArr2 = heights;
+    for (int i = 0; i < (SIZE / 2); i++)
+    {
+        int last = SIZE - (i + 1);
+        int temp = reverseArr2[last];
+        reverseArr2[last] = reverseArr2[i];
+        reverseArr2[i] = temp;
+    }
+    printArray(reverseArr2);
+    
     return 0;
+}
+
+void printArray(array<int, SIZE> arr)
+{
+    for (int i = 0; i < SIZE; i++)
+        cout << arr[i] << " ";
+    cout << endl;
 }
