@@ -96,6 +96,25 @@ int main()
     cout << "16) Max: " << *max_element(heights.begin(), heights.end()) << endl;
     //17) Find the min element
     cout << "17) Min: " << *min_element(heights.begin(), heights.end()) << endl;
+    //18) Check if the array is empty
+    cout << "18) Check if empty: " << ((heights.empty()) ? "Is empty" : "Is NOT empty") << endl;
+
+    //19) Reverse sort the array
+    cout << "19) Reverse sorted array by using rbegin() & rend(): ";
+    array<int, SIZE> sortArr2 = heights;
+    sort(sortArr2.rbegin(), sortArr2.rend());
+    printArray(sortArr2);
+
+    //20) Search for an array by using find()
+    int target = 157;
+    cout << "20) Find for an array by using find(): ";
+    auto t = find(heights.begin(), heights.end(), target);
+    cout << "Value " << target << " ";
+    if (t != heights.end())
+        cout << "found at position " << (t - heights.begin()) << ".";
+    else
+        cout << "not found.";
+    cout << endl;
 
     return 0;
 }
